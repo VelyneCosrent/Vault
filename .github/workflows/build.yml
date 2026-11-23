@@ -7,8 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: unzip -q project.zip
-      - uses: actions/setup-java@v4
+      - name: Ekstrak zip
+        run: |
+          ls -la
+          for z in *.zip; do unzip -qo "$z"; done
+          ls -la VideoVault
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: 17
